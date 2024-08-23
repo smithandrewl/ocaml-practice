@@ -1,2 +1,4 @@
 (library
- (name ocaml_practice))
+ (name ocaml_practice)
+ (public_name ocaml_practice)
+ (modules lib subproject1 subproject2))
