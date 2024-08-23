@@ -1,8 +1,12 @@
 let print_table size =
+
+  Printf.printf "\n";
+
   for i = 1 to size do
     for j = 1 to size do
-      Printf.printf "%2d x %2d = %2d\n" i j (i * j)
-    done
+      Printf.printf "%4d" (i * j)
+    done;
+    Printf.printf "\n";
   done
 
 let run () =
