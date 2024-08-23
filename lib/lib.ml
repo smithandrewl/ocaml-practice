@@ -1,2 +1,1 @@
-module Subproject1 = Subproject1
-module Subproject2 = Subproject2
+module TimesTable = Times_table
