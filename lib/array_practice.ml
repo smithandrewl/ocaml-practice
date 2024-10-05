@@ -1,11 +1,17 @@
 open Printf
 
-let to_even ints =
-  ints
+let array_filter filt array =
+  array
   |> Array.to_list
-  |> List.filter (fun value -> value mod 2 = 0)
+  |> List.filter filt
   |> Array.of_list
-  
+
+let is_even num = num mod 2 = 0
+let is_odd num = not (is_even num)
+
+let to_even = array_filter is_even
+let to_odd = array_filter is_odd
+
 let run () =
   print_endline "Array practice:";
   print_endline "";
@@ -35,4 +41,10 @@ let run () =
   |> to_even
   |> Array.iter (fun value -> printf "%i " value);
   
+  printf "\n\nOdd: ";
+
+  int_array
+  |> to_odd
+  |> Array.iter (fun value -> printf "%i " value);
+
   printf "\n"
