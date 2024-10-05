@@ -1,4 +1,4 @@
 (library
  (name ocaml_practice)
  (public_name ocaml_practice)
- (modules lib times_table))
+ (modules lib times_table array_practice))
