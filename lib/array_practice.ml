@@ -6,22 +6,26 @@ let array_filter filt array =
   |> List.filter filt
   |> Array.of_list
 
-let is_even num = num mod 2 = 0
-let is_odd num = num mod 2 <> 0
+let is_even num = num mod 2 =  0
+let is_odd  num = num mod 2 <> 0
 
 let to_even = array_filter is_even
-let to_odd = array_filter is_odd
+let to_odd  = array_filter is_odd
 
 let display_array fmt = Array.iter (printf fmt)
 
 let print_indexed_array array =
-  Array.iteri (fun index value -> printf "item(%i) = %s\n" index value) array
+  Array.iteri 
+    (fun index value -> printf "item(%i) = %s\n" index value) 
+    array
 
 let print_filtered_arrays int_array =
   printf "Unfiltered: ";
   display_array "%i " int_array;
+  
   printf "\nEven: ";
   display_array "%i " (to_even int_array);
+  
   printf "\nOdd: ";
   display_array "%i " (to_odd int_array);
   printf "\n"
