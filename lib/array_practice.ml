@@ -7,52 +7,35 @@ let array_filter filt array =
   |> Array.of_list
 
 let is_even num = num mod 2 = 0
-let is_odd num = not (is_even num)
+let is_odd num = num mod 2 <> 0
 
 let to_even = array_filter is_even
 let to_odd = array_filter is_odd
 
-let display_str_array = Array.iter (printf "%s\n")
-let display_int_array = Array.iter (printf "%i ")
+let display_array fmt = Array.iter (printf fmt)
+
+let print_indexed_array array =
+  Array.iteri (fun index value -> printf "item(%i) = %s\n" index value) array
+
+let print_filtered_arrays int_array =
+  printf "Unfiltered: ";
+  display_array "%i " int_array;
+  printf "\nEven: ";
+  display_array "%i " (to_even int_array);
+  printf "\nOdd: ";
+  display_array "%i " (to_odd int_array);
+  printf "\n"
 
 let run () =
-  print_endline "Array practice:";
-  print_endline "";
-
-  let str_array = [|"One"; "Two"; "Three"; "Four"; "Five"; "Six" |] in
+  print_endline "Array practice:\n";
+  
+  let str_array = [|"One"; "Two"; "Three"; "Four"; "Five"; "Six"|] in
   let int_array = [|1; 2; 3; 4; 5; 6; 7; 8; 9; 10|] in
-
-
-  printf "String array:\n"; 
-
-  display_str_array str_array;
-
-  printf "\n\n";
-
-  Array.iteri
-    (fun index value ->
-      printf "item(%i) = %s\n" index value)
-    str_array;
-
-  printf "\nInt array:\n\n";
-
-  printf "Unfiltered: ";
   
-  int_array
-  |> display_int_array;
-
+  printf "String array:\n";
+  display_array "%s\n" str_array;
   printf "\n";
-
-  printf "Even: ";
-
-  int_array
-  |> to_even
-  |> display_int_array;
+  print_indexed_array str_array;
   
-  printf "\nOdd: ";
-
-  int_array
-  |> to_odd
-  |> display_int_array;
-
-  printf "\n"
+  printf "\nInt array:\n\n";
+  print_filtered_arrays int_array
