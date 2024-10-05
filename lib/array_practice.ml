@@ -12,6 +12,9 @@ let is_odd num = not (is_even num)
 let to_even = array_filter is_even
 let to_odd = array_filter is_odd
 
+let display_str_array = Array.iter (printf "%s\n")
+let display_int_array = Array.iter (printf "%i ")
+
 let run () =
   print_endline "Array practice:";
   print_endline "";
@@ -22,9 +25,7 @@ let run () =
 
   printf "String array:\n"; 
 
-  Array.iter 
-    (fun word -> printf "%s\n" word)
-    str_array;
+  display_str_array str_array;
 
   printf "\n\n";
 
@@ -35,16 +36,23 @@ let run () =
 
   printf "\nInt array:\n\n";
 
+  printf "Unfiltered: ";
+  
+  int_array
+  |> display_int_array;
+
+  printf "\n";
+
   printf "Even: ";
 
   int_array
   |> to_even
-  |> Array.iter (fun value -> printf "%i " value);
+  |> display_int_array;
   
-  printf "\n\nOdd: ";
+  printf "\nOdd: ";
 
   int_array
   |> to_odd
-  |> Array.iter (fun value -> printf "%i " value);
+  |> display_int_array;
 
   printf "\n"
